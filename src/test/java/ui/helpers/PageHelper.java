@@ -31,7 +31,7 @@ public abstract class PageHelper {
     }
     public void clickOnElement(By byElement) {
         new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(byElement));
-       driver.findElement(byElement).click();
+      findByWebElement(byElement).click();
     }
     public void setField(By byElement, String value) {
         findByWebElement(byElement).clear();
@@ -103,7 +103,7 @@ public abstract class PageHelper {
     }
     public void mouseOver(By byElement) {
         new Actions(driver).moveToElement(driver.findElement(byElement)).build().perform();
-        findByWebElement(byElement);
+        driver.findElement(byElement);
     }
     public void switchToFrame(By byElement) {
         driver.switchTo().frame(driver.findElement(byElement));
