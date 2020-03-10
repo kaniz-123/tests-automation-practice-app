@@ -2,21 +2,35 @@ package ui.tests;
 
 import org.junit.Test;
 import ui.helpers.TestHelper;
-import ui.pages.ShoppingCartPage;
+import ui.pages.CasualDressesPage;
+import ui.pages.HomePage;
+import ui.pages.LayoutProductModalPage;
+import ui.pages.ShoppingCartSummeryPage;
 
 public class ShoppingCartSummaryTest extends TestHelper {
 
     @Test
     public void verifyUsersShouldBeAbleToViewShoppingSummery() {
-        String expectedMessage = "SHOPPING-CART SUMMARY";
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
-        shoppingCartPage.viewAddedItemDescription();
-        shoppingCartPage.verifyTotalAmount();
-      //  shoppingCartPage.getMessage();
 
-//        String actualStatusMessage = ShoppingCartPage.getMessage();
-//        verifyTrue("Failed : the get message is not matched", actualStatusMessage.contains(expectedMessage));
-//    }
+        new HomePage(driver).nevigateToCasualDressPage();
+        new CasualDressesPage(driver).addItemToCart();
+        new LayoutProductModalPage(driver).getproductSuccessfullyAddedToCartMessage();
+        new LayoutProductModalPage(driver).proceedToCheckout();
+        new ShoppingCartSummeryPage(driver).viewProductDescription();
+        String actualStatusMessage = new HomePage(driver).getPageHeading();
 
+        verifyEquals("Failed : the get message is not matched", "Summery", actualStatusMessage);
+    }
+
+    @Test
+    public void verifyShoppingCartSummery() {
+
+        new HomePage(driver).navigateToWomenCasualDress();
+        new CasualDressesPage(driver).addItemToCart();
+        new LayoutProductModalPage(driver).proceedToCheckout();
+        new ShoppingCartSummeryPage(driver).verifyProductDescription();
+        String actualMessage = new HomePage(driver).getSummeryText();
+
+        verifyEquals("failed", "Summery", actualMessage);
     }
 }

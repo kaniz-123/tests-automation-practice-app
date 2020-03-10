@@ -14,14 +14,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
-
 import static junit.framework.TestCase.fail;
 
 public class CommonHelper {
@@ -97,6 +95,11 @@ public class CommonHelper {
             System.out.println("++++++++++ Screenshot captured and saved:"+ filePath + "+++++++++++");
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    public static void closeDriver() {
+        if (driver != null){
+            driver.quit();
         }
     }
 }

@@ -7,13 +7,11 @@ import ui.pages.HomePage;
 public class SanityTest extends TestHelper {
     @Test
     public void verifyEveningDressPageDisplay() {
-        String expectedMessage = "EVENING DRESS";
-        HomePage homePage = new HomePage(driver);
-        homePage.mouseOverWomenTab();
-        homePage.openEveningDressPage();
-        homePage.getHomePageMessage();
 
-        String actualStatusMessage = homePage.getHomePageMessage();
-        verifyTrue("Failed : Evening Dresses Message not matched", actualStatusMessage.contains(expectedMessage));
+        HomePage homePage = new HomePage(driver);
+        homePage.openEveningDressPage();
+
+        String actualMessage = homePage.getEveningDressesTitle();
+        verifyEquals("Failed : Evening Dresses Title not matched","Evening Dresses",actualMessage);
     }
 }

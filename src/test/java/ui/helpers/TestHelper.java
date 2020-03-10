@@ -7,8 +7,7 @@ import org.junit.rules.ErrorCollector;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
-import static ui.helpers.CommonHelper.getEnvironmentProperty;
-import static ui.helpers.CommonHelper.loadDriver;
+import static ui.helpers.CommonHelper.*;
 
 public class TestHelper {
     @Rule
@@ -24,9 +23,10 @@ public class TestHelper {
         driver = loadDriver();
         driver.get(url);
     }
+
     @After
     public void teardownDriver() {
-        driver.quit();
+        closeDriver();
     }
 
     public void verifyEquals(String message, String expected, String actual) {
@@ -34,20 +34,25 @@ public class TestHelper {
             assertEquals(message, expected, actual);
         } catch (AssertionError e) {
             errorCollector.addError(e);
+            captureScreenshot();
         }
     }
+
     public void verifyTrue(String message, boolean actual) {
         try {
             assertTrue(message, actual);
         } catch (AssertionError e) {
             errorCollector.addError(e);
+            captureScreenshot();
         }
     }
+
     public void verifyFalse(String message, boolean actual) {
         try {
             assertFalse(message, actual);
         } catch (AssertionError e) {
             errorCollector.addError(e);
+            captureScreenshot();
         }
     }
 }
