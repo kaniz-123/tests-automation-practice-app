@@ -14,6 +14,10 @@ public class HomePage extends PageHelper {
     private By casualDressesText = By.xpath("//*[@id=\"center_column\"]/h1/span[1]");
     private By eveningDressesTitle = By.xpath("//*[@id=\"center_column\"]/div[1]/div/div/span");
     private By summeryText = By.xpath("//*[@id=\"order_step\"]/li[1]/span");
+    private By contactUsLink= By.cssSelector("[title='Contact Us']");
+    private By successMessage = By.cssSelector("[class='alert alert-success']");
+    private By myOrderLink = By.cssSelector("[title='My orders']");
+    //private By myOrderLink = By.cssSelector("[title='Manage my customer account']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -48,6 +52,20 @@ public class HomePage extends PageHelper {
 
     public String getSummeryText() {
         return getText(summeryText);
+    }
+
+    public ContactUsPage navigateToCustomerServicePage(){
+        clickOnElement(contactUsLink);
+        return new ContactUsPage(driver);
+    }
+    public String verifyContactUsSuccessMessage(){
+        return getText(successMessage);
+    }
+
+    public AuthenticationPage navigateToMyOrderPage(){
+        scrollDownToTheElement(myOrderLink);
+        clickOnElement(myOrderLink);
+        return new AuthenticationPage(driver);
     }
 }
 
