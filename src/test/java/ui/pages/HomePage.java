@@ -33,11 +33,6 @@ public class HomePage extends PageHelper {
         return getText(eveningDressesTitle);
     }
 
-//    public CasualDressesPage nevigateToCasualDressPage() {
-//        mouseOver(womenTab);
-//        clickOnElement(casualDressesPageLink);
-//        return new CasualDressesPage(driver);
-//    }
 
     public String getPageHeading() {
         return getText(pageHeading);
@@ -49,7 +44,6 @@ public class HomePage extends PageHelper {
         getText(casualDressesText);
         return new CasualDressesPage(driver);
     }
-
 
     public ContactUsPage navigateToCustomerServicePage(){
         clickOnElement(contactUsLink);
