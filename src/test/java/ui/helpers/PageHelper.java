@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public abstract class PageHelper {
     }
 
     private void waitUntilvisibilityOfElementLocatedBy(int timeoutSec, By byElement) {
-        new WebDriverWait(driver, timeoutSec).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byElement));
+        new WebDriverWait(driver, timeoutSec).until(ExpectedConditions.visibilityOfElementLocated(byElement));
     }
 
     public void clickOnElement(By byElement) {
@@ -48,8 +47,9 @@ public abstract class PageHelper {
         }
     }
 
-    public void selectByVisibilityText(By byElement, String visibleText) {
-        Select select = new Select(findByWebElement(byElement));
+    public void selectByVisibilityOfText(By byElement, String visibleText){
+        new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfAllElementsLocatedBy(byElement));
+        Select select = new Select(driver.findElement(byElement));
         select.selectByVisibleText(visibleText);
     }
 

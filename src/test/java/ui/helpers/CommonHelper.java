@@ -6,6 +6,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.fail;
 
 public class CommonHelper {
-    private static WebDriver driver;
+    public static WebDriver driver;
     public static final String DEFAULT_DRIVER = "chrome";
 
     public static WebDriver loadDriver() {
@@ -36,6 +37,7 @@ public class CommonHelper {
             prefMap.put("download.default_directory", getSeleniumDownloadDirectoryPath());
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("disable-infobars");
+            chromeOptions.setPageLoadStrategy(PageLoadStrategy.NONE);
             chromeOptions.setExperimentalOption("prefs", prefMap);
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver(chromeOptions);
@@ -88,7 +90,7 @@ public class CommonHelper {
         return env;
     }
     public static void captureScreenshot(){
-        String filePath = getSeleniumDownloadDirectoryPath()+"ShopingCartTest.png";
+        String filePath = getSeleniumDownloadDirectoryPath();
         File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(srcFile,new File(filePath));

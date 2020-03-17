@@ -13,11 +13,11 @@ public class HomePage extends PageHelper {
     private By casualDressesPageLink = By.cssSelector("a[title='Evening Dresses']");
     private By casualDressesText = By.xpath("//*[@id=\"center_column\"]/h1/span[1]");
     private By eveningDressesTitle = By.xpath("//*[@id=\"center_column\"]/div[1]/div/div/span");
-    private By summeryText = By.xpath("//*[@id=\"order_step\"]/li[1]/span");
     private By contactUsLink= By.cssSelector("[title='Contact Us']");
     private By successMessage = By.cssSelector("[class='alert alert-success']");
     private By myOrderLink = By.cssSelector("[title='My orders']");
-    //private By myOrderLink = By.cssSelector("[title='Manage my customer account']");
+    private By productName = By.linkText("Faded Short Sleeve T-shirts");
+    private By addToCartLink = By.linkText("Add to cart");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -33,11 +33,11 @@ public class HomePage extends PageHelper {
         return getText(eveningDressesTitle);
     }
 
-    public CasualDressesPage nevigateToCasualDressPage() {
-        mouseOver(womenTab);
-        clickOnElement(casualDressesPageLink);
-        return new CasualDressesPage(driver);
-    }
+//    public CasualDressesPage nevigateToCasualDressPage() {
+//        mouseOver(womenTab);
+//        clickOnElement(casualDressesPageLink);
+//        return new CasualDressesPage(driver);
+//    }
 
     public String getPageHeading() {
         return getText(pageHeading);
@@ -50,9 +50,6 @@ public class HomePage extends PageHelper {
         return new CasualDressesPage(driver);
     }
 
-    public String getSummeryText() {
-        return getText(summeryText);
-    }
 
     public ContactUsPage navigateToCustomerServicePage(){
         clickOnElement(contactUsLink);
@@ -66,6 +63,18 @@ public class HomePage extends PageHelper {
         scrollDownToTheElement(myOrderLink);
         clickOnElement(myOrderLink);
         return new AuthenticationPage(driver);
+    }
+
+    public WomenPage navigateToWomenPage(){
+        clickOnElement(womenTab);
+
+        return new WomenPage(driver);
+    }
+
+    public TShirtPage navigateToTShirtsPage(){
+        mouseOver(productName);
+        clickOnElement(addToCartLink);
+        return new TShirtPage(driver);
     }
 }
 
