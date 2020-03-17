@@ -6,33 +6,24 @@ import ui.helpers.PageHelper;
 
 public class ShoppingCartSummeryPage extends PageHelper {
 
-    private By orderDetailsField = By.xpath("//*[@class='cart_description item']");
-    private By colorField = By.xpath("//*[@id=\"cart_summary\"]//tr//td//a");
-    private By cartProductImage = By.xpath("//*[@id=\"product_3_13_0_0\"]//td");
-    private By productName = By.xpath("//*[@id=\"product_3_13_0_0\"]//td//p");
-    private By totalProductField = By.xpath("//*[@id=\"cart_summary\"]/tfoot/tr[1]/td[2]");
-    private By totalShippingField = By.xpath("//*[@id=\"cart_summary\"]/tfoot/tr[3]/td[1]");
-    private By taxField = By.xpath("//*[@id=\"cart_summary\"]/tfoot/tr[6]/td[1]");
-    private By scrolldownProceedToCheckout = By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]");
+    private By pageHeadingLocator = By.id("cart_title");
+    private By productItemTableHeadingLocator = By.cssSelector("#cart_summary > thead > tr > th.cart_product.first_item");// By.name("cart_product first_item");
+    private By descriptionTableHeadingLocator = By.xpath("//*[@id=\"cart_summary\"]/thead/tr/th[2]");
+    private By unitPriceTableHeadingLocator = By.cssSelector("#cart_summary > thead > tr > th.cart_unit.item");
+    private By quantityTableHeadingLocator = By.cssSelector("#cart_summary > thead > tr > th.cart_quantity.item");
+    private By totalpriceLocator = By.cssSelector("#cart_summary > tfoot > tr:nth-child(7) > td.total_price_container.text-right > span");
 
     public ShoppingCartSummeryPage(WebDriver driver) {
         super(driver);
     }
 
-    public ShoppingCartSummeryPage viewProductDescription() {
-        scrollDownToTheElement(scrolldownProceedToCheckout);
-        getText(orderDetailsField);
-        getText(colorField);
-        getText(cartProductImage);
-        getText(productName);
-
-        return this;
-    }
-
-    public ShoppingCartSummeryPage verifyProductDescription() {
-        getText(totalProductField);
-        getText(totalShippingField);
-        getText(taxField);
+    public ShoppingCartSummeryPage verifyShoppingCart() {
+        getText(pageHeadingLocator);
+        getText(productItemTableHeadingLocator);
+        getText(descriptionTableHeadingLocator);
+        getText(unitPriceTableHeadingLocator);
+        getText(quantityTableHeadingLocator);
+        getText(totalpriceLocator);
         return this;
     }
 
