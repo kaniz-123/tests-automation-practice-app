@@ -34,9 +34,9 @@ public class HomePage extends PageHelper {
     }
 
 
-    public String getPageHeading() {
-        return getText(pageHeading);
-    }
+//  //  public String getPageHeading() {
+//        return getText(pageHeading);
+//    }
 
     public CasualDressesPage navigateToWomenCasualDress() {
         mouseOver(womenTab);

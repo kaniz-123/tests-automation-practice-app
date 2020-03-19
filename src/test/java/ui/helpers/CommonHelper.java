@@ -24,8 +24,8 @@ import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.fail;
 
 public class CommonHelper {
-    public static WebDriver driver;
-    public static final String DEFAULT_DRIVER = "chrome";
+    private static WebDriver driver;
+    private static final String DEFAULT_DRIVER = "chrome";
 
     public static WebDriver loadDriver() {
         String driverType = System.getenv("DRIVER_TYPE");
