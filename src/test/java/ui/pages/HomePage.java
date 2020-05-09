@@ -29,7 +29,7 @@ public class HomePage extends PageHelper {
         return new SanityTest();
     }
 
-    public String getEveningDressesTitle() {
+       public String getEveningDressesTitle() {
         return getText(eveningDressesTitle);
     }
 

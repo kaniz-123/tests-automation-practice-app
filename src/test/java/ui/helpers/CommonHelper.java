@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.fail;
@@ -72,6 +73,12 @@ public class CommonHelper {
         System.out.println("++++++++++ All Selenium Test downloads located: " + defaultDownloadPath + " ++++++++++");
         return defaultDownloadPath;
     }
+
+    /**
+     * get environment properties value
+     * @param propertyName
+     * @return
+     */
     public static String getEnvironmentProperty(String propertyName) {
         ResourceBundle resourceBundle = ResourceBundle.getBundle(getEnvironment());
         return resourceBundle.getString(propertyName);

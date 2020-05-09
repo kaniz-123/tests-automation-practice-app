@@ -7,7 +7,7 @@ import org.junit.rules.ErrorCollector;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
-import static ui.helpers.CommonHelper.*;
+        import static ui.helpers.CommonHelper.*;
 
 public class TestHelper {
     @Rule
@@ -16,9 +16,9 @@ public class TestHelper {
 
     @Before
     public void setDriver() {
-        //String username = getEnvironmentProperty("username");
-        //String emailAddress = getEnvironmentProperty("email");
-       // String password = getEnvironmentProperty("pass");
+        String username = getEnvironmentProperty("username");
+        String emailAddress = getEnvironmentProperty("email");
+        String password = getEnvironmentProperty("pass");
         String url = getEnvironmentProperty("app.url");
         driver = loadDriver();
         driver.get(url);

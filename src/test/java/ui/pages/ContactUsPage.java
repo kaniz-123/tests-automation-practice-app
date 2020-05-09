@@ -7,8 +7,7 @@ import ui.helpers.PageHelper;
 public class ContactUsPage extends PageHelper {
 
     private By pageTitle = By.cssSelector("[class='page-heading bottom-indent']");
-    private By subjectHeadingList = By.name("id_contact");///("#id_contact");
-    private By subjectHeadingItem = By.xpath("//*[@id=\"id_contact\"]/option[2]");//("#id_contact>[value=\"2\"]");
+    private By subjectHeadingList = By.name("id_contact");
     private By emailAddressField = By.cssSelector("#email");
     private By orderReferenceField = By.cssSelector("[class='form-control grey']");
     private By uploadFile = By.name("fileUpload");
@@ -21,16 +20,13 @@ public class ContactUsPage extends PageHelper {
 
     public ContactUsPage submitContactUsForm() {
         getText(pageTitle);
-       // clickOnElement(subjectHeadingField);
         selectByVisibilityOfText(subjectHeadingList, "Customer service");
         clickOnElement(emailAddressField);
         setField(emailAddressField, "farah.khan222@gmail.com");
         setField(orderReferenceField, "#01");
-        driver.findElement(uploadFile).sendKeys("C:\\Users\\qakan\\OneDrive\\Desktop\\ContactInformation1.pdf");
-        setField(messageBox, "This is a message.");
+        driver.findElement(uploadFile).sendKeys("C:\\Users\\qakan\\OneDrive\\Documents\\test.pdf");
+        setField(messageBox, "I would like to contact with you to get some information.");
         clickOnElement(sendButton);
         return this;
     }
-
-
 }

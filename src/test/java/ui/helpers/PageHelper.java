@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.fail;
 import static ui.helpers.CommonHelper.captureScreenshot;
@@ -69,6 +71,13 @@ public abstract class PageHelper {
     public List<WebElement> findWebElements(By byElement) {
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfAllElements(driver.findElement(byElement)));
         return driver.findElements(byElement);
+    }
+    public Map<String, String> getTableMap(List<String> fieldName, List<String> fieldValue){
+        Map<String, String> productDetailsInfoMap = new HashMap<>();
+        for(int i = 0;i< fieldName.size(); i++){
+            productDetailsInfoMap.put(fieldName.get(i).trim(), fieldValue.get(i).trim());
+        }
+        return productDetailsInfoMap;
     }
 
     public boolean isElementFound(By byElement) {

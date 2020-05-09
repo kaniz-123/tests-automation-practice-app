@@ -7,7 +7,7 @@ import ui.helpers.PageHelper;
 public class ShoppingCartSummeryPage extends PageHelper {
 
     private By pageHeadingLocator = By.id("cart_title");
-    private By productItemTableHeadingLocator = By.cssSelector("#cart_summary > thead > tr > th.cart_product.first_item");// By.name("cart_product first_item");
+    private By productItemTableHeadingLocator = By.cssSelector("#cart_summary > thead > tr > th.cart_product.first_item");// By.className("cart_product first_item");
     private By descriptionTableHeadingLocator = By.xpath("//*[@id=\"cart_summary\"]/thead/tr/th[2]");
     private By unitPriceTableHeadingLocator = By.cssSelector("#cart_summary > thead > tr > th.cart_unit.item");
     private By quantityTableHeadingLocator = By.cssSelector("#cart_summary > thead > tr > th.cart_quantity.item");
