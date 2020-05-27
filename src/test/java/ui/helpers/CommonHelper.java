@@ -87,7 +87,7 @@ public class CommonHelper {
         String env = null;
         try {
             env = System.getenv("ENVIRONMENT");
-            if (StringUtils.isEmpty(env)) {
+            if (Strings.isNullOrEmpty(env)) {
                 env = "test";
             }
             env.toLowerCase();

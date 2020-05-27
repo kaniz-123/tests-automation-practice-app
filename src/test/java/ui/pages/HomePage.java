@@ -18,6 +18,7 @@ public class HomePage extends PageHelper {
     private By myOrderLink = By.cssSelector("[title='My orders']");
     private By productName = By.linkText("Faded Short Sleeve T-shirts");
     private By addToCartLink = By.linkText("Add to cart");
+    private By customerServiceSuccessMessage = By.cssSelector("[class='alert alert-success']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -45,10 +46,7 @@ public class HomePage extends PageHelper {
         return new CasualDressesPage(driver);
     }
 
-    public ContactUsPage navigateToCustomerServicePage(){
-        clickOnElement(contactUsLink);
-        return new ContactUsPage(driver);
-    }
+
     public String verifyContactUsSuccessMessage(){
         return getText(successMessage);
     }
@@ -69,6 +67,13 @@ public class HomePage extends PageHelper {
         mouseOver(productName);
         clickOnElement(addToCartLink);
         return new TShirtPage(driver);
+    }
+    public CustomerServicePage navigateToCustomerServicePage(){
+        clickOnElement(contactUsLink);
+        return new CustomerServicePage(driver);
+    }
+    public String verifyCustomerServiceSuccessMessage(){
+        return getText(customerServiceSuccessMessage);
     }
 }
 
