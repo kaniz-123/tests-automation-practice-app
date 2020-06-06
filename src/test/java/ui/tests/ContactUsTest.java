@@ -1,5 +1,6 @@
 package ui.tests;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import ui.helpers.TestHelper;
 import ui.pages.ContactUsPage;

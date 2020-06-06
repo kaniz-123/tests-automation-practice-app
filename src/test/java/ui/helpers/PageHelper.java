@@ -138,4 +138,7 @@ public abstract class PageHelper {
         }
         return webElement;
     }
+    public void mouseOverToTheElement(By byElement){
+        new Actions(driver).moveToElement(findByWebElement(byElement)).build().perform();
+    }
 }

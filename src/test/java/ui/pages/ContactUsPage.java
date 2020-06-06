@@ -18,15 +18,14 @@ public class ContactUsPage extends PageHelper {
         super(driver);
     }
 
-    public ContactUsPage submitContactUsForm() {
+    public void submitContactUsForm() {
         getText(pageTitle);
         selectByVisibilityOfText(subjectHeadingList, "Customer service");
         clickOnElement(emailAddressField);
-        setField(emailAddressField, "farah.khan222@gmail.com");
-        setField(orderReferenceField, "#01");
-        driver.findElement(uploadFile).sendKeys("C:\\Users\\qakan\\OneDrive\\Documents\\test.pdf");
+        setField(emailAddressField, "farah.khan2014ref@gmail.com");
+        setField(orderReferenceField, "#12");
+        driver.findElement(uploadFile).sendKeys("C:\\Projects\\contact Information.pdf");
         setField(messageBox, "I would like to contact with you to get some information.");
         clickOnElement(sendButton);
-        return this;
     }
 }
