@@ -16,9 +16,6 @@ public class TestHelper {
 
     @Before
     public void setDriver() {
-        String username = getEnvironmentProperty("username");
-        String emailAddress = getEnvironmentProperty("email");
-        String password = getEnvironmentProperty("pass");
         String url = getEnvironmentProperty("app.url");
         driver = loadDriver();
         driver.get(url);
